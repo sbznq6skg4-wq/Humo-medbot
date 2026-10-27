@@ -1,0 +1,4 @@
+# Yangi tokenni @BotFather dan oling va shu yerga yozing. Bu faylni hech kimga yubormang!
+BOT_TOKEN=
+# Sayt tayyor bo'lganda (https://...):
+WEBAPP_URL=
