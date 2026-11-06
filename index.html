@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#234e43">
+  <meta name="description" content="Humo Med klinikasi — shifokor qabuliga onlayn yoziling. Qulay vaqtni tanlang, biz siz bilan bog‘lanamiz.">
+  <title>Humo Med — Qabulga yozilish</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root{--green:#234e43;--ink:#263d35;--muted:#68756c;--cream:#f6f5ef;--line:#dce2d9;--lime:#dce9ad}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.6}a{color:inherit}button,input,select{font:inherit}a,button,input,select{ -webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #849d49;outline-offset:4px}
+    .wrap{max-width:1160px;margin:auto;padding:0 40px}header{display:flex;align-items:center;justify-content:space-between;padding:27px 0;border-bottom:1px solid var(--line)}.brand{display:flex;gap:11px;align-items:center;text-decoration:none;font-family:Manrope,sans-serif;font-size:25px;font-weight:800;letter-spacing:-1px}.brand svg{width:36px;height:36px}.brand span span{font-weight:400}.header-link{text-decoration:none;font-size:14px;font-weight:600}.header-link span{color:var(--muted);font-weight:400;margin-right:20px}
+    main{display:grid;grid-template-columns:1fr 1fr;gap:72px;padding:64px 0 60px}.eyebrow{display:flex;align-items:center;gap:9px;text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:2px}.dot{width:7px;height:7px;border-radius:50%;background:#76914c}h1,h2{font-family:Manrope,sans-serif;line-height:1.15;letter-spacing:-1.8px}h1{font-size:clamp(38px,4.5vw,58px);font-weight:500;margin:24px 0}h1 em{font-style:normal;color:#718557}.intro{max-width:390px;color:var(--muted);font-size:16px;margin-bottom:28px}.trust{display:flex;gap:24px;font-size:12px;font-weight:500}.trust span{display:flex;align-items:center;gap:7px}.tick{color:#638048}
+    .clinic-art{position:relative;overflow:hidden;background:#e7ebdf;border-radius:18px;margin-top:35px;min-height:210px;padding:28px;display:flex;align-items:flex-end}.art-orbit{position:absolute;width:250px;height:250px;border:1px solid #cdd6bd;border-radius:50%;right:-18px;top:-30px}.art-orbit:before{content:'';position:absolute;inset:24px;border:1px solid #cdd6bd;border-radius:50%}.art-cross{position:absolute;right:48px;top:38px;width:100px;height:100px;transform:rotate(-12deg);filter:drop-shadow(8px 12px 0 #ced8bd)}.art-caption{position:relative;max-width:220px}.art-caption strong{font-family:Manrope,sans-serif;font-size:23px;font-weight:500;letter-spacing:-.6px;line-height:1.3;display:block}.art-caption p{font-size:12px;color:#5e715e;margin:10px 0 0}.mini-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:12px}
+    .booking{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;box-shadow:0 12px 36px #234e4305;align-self:start}.form-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.step{font-size:10px;letter-spacing:1px;color:var(--muted)}.pill{font-size:10px;font-weight:600;padding:5px 10px;border-radius:20px;background:#eef2e7;color:#58733c}h2{font-size:27px;letter-spacing:-.9px;margin:12px 0 8px}.form-desc{font-size:13px;color:var(--muted);margin:0 0 25px}.field{margin-bottom:17px}label{display:block;font-size:12px;font-weight:600;margin-bottom:7px}input,select{width:100%;min-height:47px;padding:11px 13px;border:1px solid #dce2dc;background:#fdfdfa;border-radius:7px;color:var(--ink);font-size:14px}input::placeholder{color:#92998f}input:focus,select:focus{border-color:#76914c}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.hint{font-size:11px;color:var(--muted);margin:6px 0 0}.consent{display:flex;align-items:flex-start;gap:9px;font-size:11px;font-weight:400;line-height:1.6;color:var(--muted);margin:4px 0 20px}.consent input{width:15px;min-height:15px;margin:3px 0 0;accent-color:var(--green);flex-shrink:0}.submit{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--green);color:#fff;border:0;border-radius:8px;padding:14px 17px;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s,transform .2s}.submit:hover{background:#326654}.submit:active{transform:translateY(1px)}.submit:disabled{opacity:.7;cursor:wait}.submit span:last-child{font-size:20px;line-height:1}.footnote{text-align:center;font-size:10px;color:var(--muted);margin:13px 0 0}.hidden{display:none}.status{font-size:13px;margin:14px 0 0}.status.error{color:#a3372a}.status.success{background:#eef2e7;color:var(--green);padding:16px;border-radius:8px}
+    .contact-bar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}.contact-title{font-family:Manrope,sans-serif;font-size:17px;font-weight:600}.contact-title small{display:block;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;margin-top:3px}.contact-actions{display:flex;align-items:center;gap:28px}.phone{font-size:16px;font-weight:600;text-decoration:none}.map{font-size:12px;color:var(--muted);text-underline-offset:4px}footer{display:flex;justify-content:space-between;padding:22px 0 28px;font-size:10px;color:var(--muted)}
+    @media(max-width:900px){main{gap:30px}.wrap{padding:0 24px}.booking{padding:24px}.trust{gap:12px;font-size:11px}.header-link span{display:none}.art-cross{right:25px;opacity:.65}.art-caption{max-width:180px}}@media(max-width:640px){.wrap{padding:0 20px}header{padding:20px 0}.brand{font-size:23px}.header-link{font-size:12px}main{grid-template-columns:1fr;padding:33px 0;gap:30px}h1{font-size:43px;margin:17px 0}.intro{font-size:14px;margin-bottom:18px}.clinic-art{min-height:160px;margin-top:25px;padding:22px}.art-cross{right:44px;top:24px;width:90px;height:90px;opacity:1}.art-caption{max-width:210px}.art-caption strong{font-size:20px}.art-caption p{font-size:11px}.mini-label{margin-bottom:7px}.booking{padding:25px 22px}.contact-bar{align-items:flex-start;flex-direction:column;gap:15px}.contact-actions{width:100%;justify-content:space-between;gap:10px}footer{gap:14px;flex-wrap:wrap}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="./" aria-label="Humo Med bosh sahifa"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#234e43"/><path d="M17 9h6v8h8v6h-8v8h-6v-8H9v-6h8z" fill="#dce9ad"/></svg><span>humo<span>med</span></span></a>
+      <a class="header-link" href="tel:+998979921111"><span>Savollaringiz bormi?</span>+998 97 992 11 11 ↗</a>
+    </header>
+    <main>
+      <section aria-labelledby="welcome">
+        <div class="eyebrow"><span class="dot"></span> Humo Med klinikasi</div>
+        <h1 id="welcome">Sog‘lig‘ingiz uchun<br><em>birinchi qadam.</em></h1>
+        <p class="intro">O‘zingizga qulay kunni tanlang va shifokor qabuliga yoziling. Qolganini birgalikda hal qilamiz.</p>
+        <div class="trust"><span><b class="tick" aria-hidden="true">✓</b> 8 yillik tajriba</span><span><b class="tick" aria-hidden="true">✓</b> 24/7 xizmat</span></div>
+        <div class="clinic-art">
+          <div class="art-orbit" aria-hidden="true"></div>
+          <svg class="art-cross" viewBox="0 0 100 100" aria-hidden="true"><path d="M34 4h32v30h30v32H66v30H34V66H4V34h30z" fill="#fbfcf5"/></svg>
+          <div class="art-caption"><span class="mini-label">Sizga g‘amxo‘rlik bilan</span><strong>Savollaringizga javob.<br>Sog‘lig‘ingizga e’tibor.</strong><p>Humo Med — salomatlik sari birga.</p></div>
+        </div>
+      </section>
+      <section class="booking" aria-labelledby="booking-title">
+        <div class="form-top"><span class="step">ONLAYN QABUL</span><span class="pill">Qulay va oson</span></div>
+        <h2 id="booking-title">Qabulga yozilish</h2>
+        <p class="form-desc">Ma’lumotlaringizni qoldiring, biz siz bilan bog‘lanamiz.</p>
+        <form name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+          <input type="hidden" name="form-name" value="appointment">
+          <p class="hidden"><label>Bu maydonni bo‘sh qoldiring<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="field"><label for="full-name">Ism va familiyangiz</label><input id="full-name" name="full-name" autocomplete="name" placeholder="Ism va familiyangizni kiriting" minlength="2" maxlength="100" required></div>
+          <div class="field"><label for="phone">Telefon raqamingiz</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+998 90 123 45 67" pattern="\+?[0-9\s()\-]{9,20}" maxlength="21" title="Telefon raqamini mamlakat kodi bilan kiriting, masalan: +998 90 123 45 67" required><p class="hint">Qabulni tasdiqlash uchun shu raqamga qo‘ng‘iroq qilamiz.</p></div>
+          <div class="field"><label for="service">Qabul turi</label><select id="service" name="service" required><option value="" disabled selected>Qabul turini tanlang</option value="consultation">Shifokor konsultatsiyasi</option><option value="follow-up">Takroriy qabul</option><option value="help-choosing">Tanlashda yordam kerak</option></select></div>
+          <div class="row">
+            <div class="field"><label for="date">Qulay sana</label><input id="date" name="preferred-date" type="date" required></div>
+            <div class="field"><label for="time">Qulay vaqt</label><select id="time" name="preferred-time" required><option value="" disabled selected>Vaqtni tanlang</option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></div>
+          </div>
+          <label class="consent"><input type="checkbox" name="consent" value="accepted" required><span>Qabul bo‘yicha men bilan bog‘lanish uchun ma’lumotlarimni qayta ishlashga roziman.</span></label>
+          <button class="submit" type="submit"><span>Qabulga yozilish</span><span aria-hidden="true">↗</span></button>
+          <p id="form-status" class="status" role="status" aria-live="polite" tabindex="-1"></p>
+          <p class="footnote">Qabul sanasi va vaqti telefon orqali tasdiqlanadi.</p>
+        </form>
+      </section>
+    </main>
+    <aside class="contact-bar" aria-label="Bog‘lanish"><div class="contact-title">Sizni tinglashga tayyormiz.<small>Yordam kerak bo‘lsa, bizga qo‘ng‘iroq qiling.</small></div><div class="contact-actions"><a class="phone" href="tel:+998979921111">+998 97 992 11 11</a><a class="map" href="https://maps.app.goo.gl/DhSA68hzcFURT8Hx6?g_st=ic" target="_blank" rel="noopener noreferrer">Xaritada ko‘rish ↗</a></div></aside>
+    <footer><span>© <span id="year">2026</span> Humo Med. Salomatlik sari birga.</span><span>Shoshilinch yordam uchun: <a href="tel:103">103</a></span></footer>
+  </div>
+  <script>
+    const form = document.forms.appointment;
+    const date = document.getElementById('date');
+    function updateMinimumDate() {
+      const now = new Date();
+      date.min = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    }
+    updateMinimumDate();
+    date.addEventListener('focus', updateMinimumDate);
+    document.getElementById('year').textContent = new Date().getFullYear();
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      updateMinimumDate();
+      if (!form.reportValidity()) return;
+      const button = form.querySelector('button');
+      const status = document.getElementById('form-status');
+      button.disabled = true;
+      button.firstElementChild.textContent = 'Yuborilmoqda…';
+      form.setAttribute('aria-busy', 'true');
+      status.className = 'status';
+      status.textContent = '';
+      try {
+        const response = await fetch('/', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString()});
+        if (!response.ok) throw new Error('Submission failed');
+        form.reset();
+        status.className = 'status success';
+        status.textContent = 'So‘rovingiz yuborildi! Qabul sanasi va vaqtini tasdiqlash uchun siz bilan bog‘lanamiz.';
+        status.focus();
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'So‘rov yuborilmadi. Qayta urinib ko‘ring yoki +998 97 992 11 11 raqamiga qo‘ng‘iroq qiling.';
+        status.focus();
+      } finally {
+        button.disabled = false;
+        button.firstElementChild.textContent = 'Qabulga yozilish';
+        form.removeAttribute('aria-busy');
+      }
+    });
+  </script>
+</body>
+</html>

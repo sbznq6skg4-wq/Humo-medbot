@@ -31,7 +31,6 @@ from aiogram.types import (
     KeyboardButton,
     Message,
     ReplyKeyboardMarkup,
-    ReplyKeyboardRemove,
     WebAppInfo,
 )
 from dotenv import load_dotenv
@@ -40,7 +39,7 @@ load_dotenv()
 
 # ======================= SOZLAMALAR =======================
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-WEBAPP_URL = os.getenv("WEBAPP_URL", "")  # sayt tayyor bo'lganda .env ga yozasiz (https://...)
+WEBAPP_URL = os.getenv("WEBAPP_URL") or "https://heroic-bublanina-d3a00a.netlify.app"
 ADMINS = {8196942761, 663593026}
 ORDERS_CHAT_ID = -1004466442357  # qabullar boradigan kanal/guruh
 CLINIC_PHONE = "+998979921111"  # TEKSHIRING: 979921111 raqami +998 bilan yozildi
@@ -109,6 +108,13 @@ async def send_media(target: Message, key: str, caption: str | None = None, mark
         return False
 
 
+def webapp_keyboard() -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="🌐 Klinika WebApp", web_app=WebAppInfo(url=WEBAPP_URL))]],
+        resize_keyboard=True,
+    )
+
+
 def main_menu() -> InlineKeyboardMarkup:
     return kb(
         [
@@ -131,10 +137,14 @@ def lang_kb() -> InlineKeyboardMarkup:
 async def cmd_start(m: Message, state: FSMContext):
     await state.clear()
     if m.from_user.id in USERS and USERS[m.from_user.id].get("phone"):
+        await m.answer("🏥 Humo Med", reply_markup=webapp_keyboard())
         await m.answer("Tilni tanlang / Выберите язык / Choose language:", reply_markup=lang_kb())
         return
     kb_contact = ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="📱 Raqamni yuborish", request_contact=True)]],
+        keyboard=[
+            [KeyboardButton(text="📱 Raqamni yuborish", request_contact=True)],
+            webapp_keyboard().keyboard[0],
+        ],
         resize_keyboard=True,
         one_time_keyboard=True,
     )
@@ -151,7 +161,7 @@ async def got_contact(m: Message):
         await m.answer("Iltimos, o'zingizning raqamingizni tugma orqali yuboring.")
         return
     USERS[m.from_user.id] = {"phone": m.contact.phone_number, "lang": "uz"}
-    await m.answer("✅ Rahmat!", reply_markup=ReplyKeyboardRemove())
+    await m.answer("✅ Rahmat!", reply_markup=webapp_keyboard())
     await m.answer("Tilni tanlang / Выберите язык / Choose language:", reply_markup=lang_kb())
 
 
