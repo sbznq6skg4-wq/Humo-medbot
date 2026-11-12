@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Humo Med</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#fbfdfb;--ink:#14291f;--mute:#4f6a5b;--green:#2a9a47;--deep:#16682f;--mint:#e8f5ec;--line:#cfe6d6;--on:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1912;--ink:#e6f2ea;--mute:#9bb8a6;--deep:#6fd68c;--mint:#152a1d;--line:#27402f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1912;--ink:#e6f2ea;--mute:#9bb8a6;--deep:#6fd68c;--mint:#152a1d;--line:#27402f;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Onest,system-ui,sans-serif}
+main{max-width:680px;margin:0 auto;padding:0 18px 40px}
+h1,h2,h3{line-height:1.15;margin:0}h2{font-size:26px;font-weight:800;margin-bottom:14px}
+.top{display:flex;align-items:center;gap:10px;padding:14px 0 6px}
+.top img{width:42px;height:42px;border-radius:10px}.top b{font-weight:800;font-size:20px;flex:1}.top b span{color:var(--green)}
+.lang button{border:2px solid var(--line);background:none;color:var(--ink);border-radius:10px;padding:5px 9px;font:700 13px Onest,sans-serif;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--on)}
+.hero{padding:20px 0 6px}.hero h1{font-size:clamp(30px,8.5vw,44px);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--mute);margin:14px 0 0;max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:14px;font-weight:700;text-decoration:none;border:2px solid var(--green);cursor:pointer;font-family:inherit;font-size:16px}
+.btn.main{background:var(--green);color:var(--on)}.btn.alt{color:var(--deep);background:none}
+.btn:focus-visible,summary:focus-visible,.lang button:focus-visible{outline:3px solid var(--deep);outline-offset:3px}
+.price{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin:24px 0 0}
+.price div{padding:14px 16px}.price div+div{background:var(--mint);border-left:2px solid var(--line)}
+.price small{display:block;color:var(--mute);font-size:13px}.price strong{font-size:21px;font-weight:800}.price .s{color:var(--deep)}
+section{padding-top:38px}
+video,.ph{width:100%;border-radius:16px;display:block;background:var(--mint)}
+.doc{display:flex;gap:14px;padding:16px 0;border-top:2px solid var(--line)}
+.doc img{flex:none;width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--line)}
+.doc h3{font-size:18px}.doc p{margin:4px 0 0;color:var(--mute);font-size:15px}
+details{border-top:2px solid var(--line)}details:last-of-type{border-bottom:2px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;font-weight:700}
+summary::-webkit-details-marker{display:none}summary em{font-style:normal;color:var(--deep);white-space:nowrap}
+details:not([open]) summary::after{content:"+";color:var(--mute)}details[open] summary::after{content:"–";color:var(--mute)}
+details p{margin:0 0 12px;color:var(--mute);font-size:15px}details img{width:100%;border-radius:14px;margin-bottom:16px;display:block}
+ul.f{list-style:none;margin:0;padding:0}ul.f li{padding:11px 0;border-top:2px solid var(--line)}ul.f b{display:block}ul.f span{color:var(--mute);font-size:15px}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.gal figure{margin:0}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block}.gal figcaption{font-size:13px;color:var(--mute);margin-top:4px}
+.note{margin-top:30px;padding:16px;border-radius:16px;background:var(--mint);border:2px solid var(--line)}
+footer{margin-top:34px;color:var(--mute);font-size:14px}
+#admin{display:none;margin-top:34px;padding:16px;border:2px dashed var(--green);border-radius:16px}
+#admin .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+#admin .tabs button{border:2px solid var(--line);background:none;color:var(--ink);border-radius:10px;padding:7px 11px;font:700 13px Onest,sans-serif;cursor:pointer}
+#admin .tabs button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--on)}
+.card{border-top:2px solid var(--line);padding:10px 0;font-size:14px;overflow-wrap:anywhere}.card b{color:var(--deep)}
+</style>
+</head>
+<body>
+<main>
+<div class="top">
+<img src="img/logo.jpg" alt="Humo Med">
+<b>HUMO<span>MED</span></b>
+<div class="lang" role="group" aria-label="Language"><button data-l="uz">UZ</button> <button data-l="ru">RU</button> <button data-l="en">EN</button></div>
+</div>
+
+<div class="hero">
+<h1 data-i="h1"></h1><p data-i="sub"></p>
+<div class="cta"><a class="btn main" href="https://t.me/humo_med_bot" data-i="book"></a><a class="btn alt" href="tel:+998979921111" data-i="call"></a></div>
+<div class="price"><div><small data-i="p1"></small><strong>70 000 <span data-i="u"></span></strong></div><div><small data-i="p2"></small><strong class="s">50 000 <span data-i="u"></span></strong></div></div>
+</div>
+
+<section><video controls preload="none" playsinline src="video/intro.mp4" onerror="this.remove()"></video></section>
+
+<section id="doctors"><h2 data-i="t_doc"></h2>
+<div class="doc"><img src="img/hasanjon.jpg" alt="Dr. Hasanjon Sulaymonov"><div><h3 data-i="d1n"></h3><p data-i="d1"></p></div></div>
+<div class="doc"><img src="img/zuhriddin.jpg" alt="Dr. Zuhriddin Xolikov"><div><h3 data-i="d2n"></h3><p data-i="d2"></p></div></div>
+</section>
+
+<section id="wards"><h2 data-i="t_w"></h2>
+<details><summary><span data-i="w1"></span><em>200 000 <span data-i="u"></span></em></summary><img src="img/ward-normal.jpg" alt="" loading="lazy"><p data-i="w1d"></p></details>
+<details><summary><span data-i="w2"></span><em>250 000 <span data-i="u"></span></em></summary><img src="img/ward-lux2.jpg" alt="" loading="lazy"><p data-i="w2d"></p></details>
+<details><summary><span data-i="w3"></span><em>250 000 <span data-i="u"></span></em></summary><img src="img/ward-lux3.jpg" alt="" loading="lazy"><img src="img/bath.jpg" alt="" loading="lazy"><p data-i="w3d"></p></details>
+</section>
+
+<section id="clinic"><h2 data-i="t_c"></h2>
+<ul class="f"><li><b data-i="c1"></b><span data-i="c1d"></span></li><li><b data-i="c2"></b><span data-i="c2d"></span></li><li><b data-i="c3"></b><span data-i="c3d"></span></li><li><b data-i="c4"></b><span data-i="c4d"></span></li><li><b data-i="c5"></b><span data-i="c5d"></span></li></ul>
+<div class="gal">
+<figure><img src="img/reception.jpg" alt="" loading="lazy"><figcaption data-i="g1"></figcaption></figure>
+<figure><img src="img/hall.jpg" alt="" loading="lazy"><figcaption data-i="g2"></figcaption></figure>
+<figure><img src="img/laser.jpg" alt="" loading="lazy"><figcaption data-i="g3"></figcaption></figure>
+<figure><img src="img/work.jpg" alt="" loading="lazy"><figcaption data-i="g4"></figcaption></figure>
+<figure style="grid-column:1/-1"><img src="img/certs.jpg" alt="" loading="lazy" style="aspect-ratio:16/7"><figcaption data-i="g5"></figcaption></figure>
+</div></section>
+
+<section id="map"><h2 data-i="t_m"></h2><a class="btn main" href="https://maps.app.goo.gl/DhSA68hzcFURT8Hx6?g_st=ic" data-i="map"></a></section>
+
+<div class="note"><b data-i="n1"></b><br><span data-i="n2"></span><div class="cta"><a class="btn main" href="https://t.me/humo_med_bot">@humo_med_bot</a></div></div>
+
+<section id="admin"><h2>🛠 Admin panel</h2>
+<div class="tabs" role="group" aria-label="Admin"><button data-t="overview">Statistika</button><button data-t="appointments">Arizalar</button><button data-t="callbacks">Qo’ng’iroq</button><button data-t="questions">Savollar</button><button data-t="users">Foydalanuvchilar</button></div>
+<div id="out"></div></section>
+
+<footer>Humo Med · +998 97 992 11 11</footer>
+</main>
+<script>
+// ====== SOZLAMA: Render'dagi bot manzilingiz (https://....onrender.com), oxirida "/" bo'lmasin ======
+const API = "https://YOUR-SERVICE.onrender.com";
+
+const I = {
+uz:{h1:"Proktologiya klinikasi. Kechayu kunduz, dam olish kunisiz.",sub:"8 yillik tajriba, lazer xonasi, qulay palatalar va bemorlar uchun 3 mahal parhez ovqat.",book:"Qabulga yozilish",call:"Qo’ng’iroq qilish",p1:"Konsultatsiya",p2:"Bot orqali yozilsangiz (bir marta)",u:"so’m",t_doc:"Shifokorlar",d1n:"Sulaymonov Hasanjon Tohirjonovich",d1:"Proktolog, 1992 yil. 7 yillik tajriba. Rossiya, Turkiya, Ozarbayjon va Qozog’istonda malaka oshirgan.",d2n:"Xolikov Zuhriddin Muhiddin o’g’li",d2:"1995 yil. 4 yillik tajriba.",t_w:"Palatalar",w1:"Oddiy palata",w1d:"2–4 kishilik. Wi-Fi va televizor. Kuniga 3 mahal parhez ovqat.",w2:"Lyuks, 2 kishilik",w2d:"Wi-Fi, televizor va shaxsiy hammom. Kuniga 3 mahal parhez ovqat.",w3:"Lyuks, 3 kishilik",w3d:"Wi-Fi, televizor, konditsioner va shaxsiy hammom. Kuniga 3 mahal parhez ovqat.",t_c:"Klinika haqida",c1:"8 yillik tajriba",c1d:"Humo Med 8 yildan beri bemorlarga xizmat qiladi.",c2:"24/7 qabul",c2d:"Dam olish kunlarisiz, kechayu kunduz ochiq.",c3:"Lazer xonasi",c3d:"Zamonaviy usullar bilan davolash.",c4:"3 mahal ovqat",c4d:"Yotib davolanadigan bemorlar uchun mazali va parhez ovqat.",c5:"Do’st taklif qilsangiz",c5d:"Har bir do’stingiz uchun konsultatsiyadan 1% chegirma.",g1:"Qabulxona",g2:"Kutish zali",g3:"Lazer xonasi",g4:"Ish jarayoni",g5:"Shifokorlarimiz sertifikatlari",t_m:"Manzil",map:"Xaritada ochish",n1:"Qabulga yozilish",n2:"Telegram botimizda ism, holat va qulay vaqtni yozasiz, xodimlarimiz tasdiqlab javob beradi."},
+ru:{h1:"Клиника проктологии. Круглосуточно, без выходных.",sub:"8 лет опыта, лазерный кабинет, удобные палаты и 3-разовое диетическое питание для пациентов.",book:"Записаться на приём",call:"Позвонить",p1:"Консультация",p2:"При записи через бота (один раз)",u:"сум",t_doc:"Врачи",d1n:"Сулаймонов Хасанжон Тохиржонович",d1:"Проктолог, 1992 г.р. Стаж 7 лет. Повышал квалификацию в России, Турции, Азербайджане и Казахстане.",d2n:"Холиков Зухриддин Мухиддин угли",d2:"1995 г.р. Стаж 4 года.",t_w:"Палаты",w1:"Обычная палата",w1d:"На 2–4 человека. Wi-Fi и телевизор. 3-разовое диетическое питание.",w2:"Люкс, 2 места",w2d:"Wi-Fi, телевизор и отдельный санузел. 3-разовое диетическое питание.",w3:"Люкс, 3 места",w3d:"Wi-Fi, телевизор, кондиционер и отдельный санузел. 3-разовое диетическое питание.",t_c:"О клинике",c1:"8 лет опыта",c1d:"Humo Med принимает пациентов уже 8 лет.",c2:"Приём 24/7",c2d:"Без выходных, днём и ночью.",c3:"Лазерный кабинет",c3d:"Лечение современными методами.",c4:"3-разовое питание",c4d:"Вкусное диетическое питание для пациентов стационара.",c5:"Пригласите друга",c5d:"За каждого друга скидка 1% на консультацию.",g1:"Приёмная",g2:"Зал ожидания",g3:"Лазерный кабинет",g4:"Рабочий процесс",g5:"Сертификаты наших врачей",t_m:"Адрес",map:"Открыть на карте",n1:"Запись на приём",n2:"В нашем Telegram-боте укажите имя, состояние и удобное время, сотрудники подтвердят запись."},
+en:{h1:"Proctology clinic. Open day and night, no days off.",sub:"8 years of experience, a laser room, comfortable wards and diet meals three times a day for patients.",book:"Book an appointment",call:"Call us",p1:"Consultation",p2:"When booking via the bot (once)",u:"UZS",t_doc:"Doctors",d1n:"Sulaymonov Hasanjon Tohirjonovich",d1:"Proctologist, born 1992. 7 years of experience. Trained in Russia, Turkey, Azerbaijan and Kazakhstan.",d2n:"Xolikov Zuhriddin Muhiddin ugli",d2:"Born 1995. 4 years of experience.",t_w:"Wards",w1:"Standard ward",w1d:"2–4 beds. Wi-Fi and TV. Diet meals three times a day.",w2:"Lux, 2 beds",w2d:"Wi-Fi, TV and a private bathroom. Diet meals three times a day.",w3:"Lux, 3 beds",w3d:"Wi-Fi, TV, air conditioning and a private bathroom. Diet meals three times a day.",t_c:"About the clinic",c1:"8 years of experience",c1d:"Humo Med has been serving patients for 8 years.",c2:"Open 24/7",c2d:"No days off, day and night.",c3:"Laser room",c3d:"Treatment with modern methods.",c4:"Three meals a day",c4d:"Tasty diet meals for inpatients.",c5:"Invite a friend",c5d:"1% consultation discount for each friend.",g1:"Reception",g2:"Waiting area",g3:"Laser room",g4:"How we work",g5:"Our doctors’ certificates",t_m:"Location",map:"Open on the map",n1:"Book an appointment",n2:"In our Telegram bot you enter your name, condition and a convenient time, and our staff confirm."}
+};
+const tg = window.Telegram && Telegram.WebApp;
+const q = new URLSearchParams(location.search).get("lang");
+let saved = null; try { saved = localStorage.getItem("lang"); } catch (e) {}
+const tgl = tg && tg.initDataUnsafe && tg.initDataUnsafe.user ? tg.initDataUnsafe.user.language_code : "";
+let lang = [q, saved, (tgl || "").slice(0, 2)].find(x => I[x]) || "uz";
+
+function render() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i]").forEach(el => { el.textContent = I[lang][el.dataset.i] || ""; });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === lang));
+  const d = I[lang]; document.title = "Humo Med";
+  document.querySelectorAll("figure img").forEach((img, i) => { img.alt = d["g" + (i + 1)] || ""; });
+}
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => {
+  lang = b.dataset.l; try { localStorage.setItem("lang", lang); } catch (e) {}
+  const u = new URL(location); u.searchParams.set("lang", lang); history.replaceState(null, "", u); render();
+});
+render();
+
+// ====== Admin panel: faqat adminlarga ko'rinadi (tekshiruv serverda, initData orqali) ======
+async function call(path) {
+  const r = await fetch(API + path, { headers: { Authorization: "tma " + tg.initData } });
+  if (!r.ok) throw new Error(r.status); return r.json();
+}
+const L = { id:"ID", name:"Ism", phone:"Telefon", username:"Username", doctor:"Shifokor", stage:"Holat", time:"Vaqt", status:"Status", price:"Narx", created:"Sana", by:"Ko’rib chiqdi", question:"Savol", answer:"Javob", lang:"Til",
+  users:"Foydalanuvchilar", users_today:"Bugun qo’shilgan", apps_total:"Jami arizalar", apps_new:"Yangi", apps_accepted:"Qabul qilingan", apps_rejected:"Rad etilgan", apps_time_changed:"Vaqt kelishilmoqda", apps_today:"Bugungi qabullar", calls_new:"Javobsiz qo’ng’iroqlar", questions:"AI savollari" };
+function line(parent, k, v) { const d = document.createElement("div"); const b = document.createElement("b"); b.textContent = (L[k] || k) + ": "; d.append(b, document.createTextNode(String(v))); parent.append(d); }
+async function load(tab) {
+  const out = document.getElementById("out"); out.textContent = "…";
+  document.querySelectorAll("#admin .tabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.t === tab));
+  try {
+    const data = await call("/api/admin/" + tab); out.textContent = "";
+    if (!Array.isArray(data)) { const c = document.createElement("div"); Object.entries(data).forEach(([k, v]) => line(c, k, v)); out.append(c); return; }
+    if (!data.length) { out.textContent = "—"; return; }
+    data.forEach(it => { const c = document.createElement("div"); c.className = "card"; Object.entries(it).forEach(([k, v]) => { if (v !== null && v !== "") line(c, k, v); }); out.append(c); });
+  } catch (e) { out.textContent = "Xato: ma’lumot olinmadi."; }
+}
+if (tg && tg.initData) {
+  tg.ready(); tg.expand();
+  call("/api/admin/me").then(() => {
+    document.getElementById("admin").style.display = "block";
+    document.querySelectorAll("#admin .tabs button").forEach(b => b.onclick = () => load(b.dataset.t));
+    load("overview");
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
