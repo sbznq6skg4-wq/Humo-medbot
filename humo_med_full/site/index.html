@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f6b3a">
+<title>Humo Med</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="config.js"></script>
+<style>
+:root{--bg:#f3f8f5;--card:#fff;--ink:#11251a;--mute:#5a7367;--g:#1f9d55;--g2:#0f6b3a;--soft:#e4f3ea;--line:#d9e8de;--sh:0 10px 30px rgba(15,80,45,.10);color-scheme:light;box-sizing:border-box}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a140f;--card:#122119;--ink:#e8f3ec;--mute:#92af9e;--soft:#173025;--line:#23402f;--sh:0 10px 30px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme=dark]{--bg:#0a140f;--card:#122119;--ink:#e8f3ec;--mute:#92af9e;--soft:#173025;--line:#23402f;--sh:0 10px 30px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Onest,system-ui,sans-serif;padding-top:env(safe-area-inset-top,0)}
+#hd{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px)}
+#hd img{width:38px;height:38px;border-radius:11px}#hd b{font-weight:800;font-size:19px;flex:1}#hd b i{color:var(--g);font-style:normal}
+.lg button{border:0;background:var(--soft);color:var(--ink);border-radius:9px;padding:5px 8px;font:700 12px Onest,sans-serif;cursor:pointer}
+.lg button.on{background:var(--g);color:#fff}
+main{max-width:680px;margin:0 auto;padding:6px 16px calc(110px + env(safe-area-inset-bottom,0))}
+.view{animation:in .3s ease}@keyframes in{from{opacity:0;transform:translateY(8px)}}
+h2{font-size:24px;font-weight:800;margin:26px 0 12px;letter-spacing:-.01em}
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:26px 22px;color:#fff;background:radial-gradient(circle at 85% 10%,#4fe08e55,transparent 45%),linear-gradient(135deg,#0c5a32,#1fa85c);box-shadow:var(--sh)}
+.hero h1{margin:0;font-size:clamp(29px,8vw,40px);line-height:1.08;font-weight:800;letter-spacing:-.02em}.hero p{margin:12px 0 0;opacity:.9;max-width:40ch}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.b{border:0;border-radius:16px;min-height:48px;padding:0 20px;font:700 15px Onest,sans-serif;cursor:pointer;background:var(--soft);color:var(--g2);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+:root[data-theme=dark] .b,.hero .b{color:inherit}.b.p{background:#fff;color:#0c5a32}.card .b.p,.md .b.p{background:var(--g);color:#fff}
+.b:active{transform:scale(.97)}.b.sm{min-height:36px;padding:0 13px;font-size:13px;border-radius:12px}.b.dn{background:#fde8e8;color:#b42318}
+.card{background:var(--card);border-radius:22px;padding:16px;margin-top:12px;box-shadow:var(--sh);overflow-wrap:anywhere}
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.pr .card{margin:0}.pr small{color:var(--mute);display:block;font-size:13px}.pr b{font-size:21px}.pr .hl b{color:var(--g)}
+.fs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.fs div{background:var(--soft);border-radius:16px;padding:12px 14px;font-weight:700;font-size:14px}
+.ann{background:linear-gradient(135deg,#fff3c4,#ffe08a);color:#5b4300;border-radius:18px;padding:12px 16px;margin:8px 0;font-weight:500}
+.dc{display:flex;gap:14px;align-items:center}.dc img{width:86px;height:86px;border-radius:24px;object-fit:cover;object-position:top;flex:none}.dc h3{margin:0;font-size:17px}.dc p{margin:4px 0 8px;color:var(--mute);font-size:14px}
+.wc img,.gl img{width:100%;border-radius:16px;display:block}.wc h3{margin:12px 0 2px;display:flex;justify-content:space-between;gap:8px;font-size:18px}.wc h3 em{color:var(--g);font-style:normal;white-space:nowrap}.wc p{margin:0;color:var(--mute);font-size:14px}
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gl img{aspect-ratio:4/3;object-fit:cover}
+video{width:100%;border-radius:18px;display:block;background:#000;max-height:60vh}
+.ch{display:flex;flex-direction:column;gap:10px;padding-bottom:70px}.m{max-width:86%;padding:11px 14px;border-radius:20px;font-size:15px}.m.u{align-self:flex-end;background:var(--g);color:#fff;border-bottom-right-radius:6px}.m.a{background:var(--card);box-shadow:var(--sh);border-bottom-left-radius:6px}.m button{margin-top:8px}
+.ib{position:fixed;left:0;right:0;bottom:calc(76px + env(safe-area-inset-bottom,0));padding:0 16px;display:flex;gap:8px;max-width:680px;margin:0 auto}
+input,select,textarea{width:100%;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:12px 14px;font:16px Onest,sans-serif;margin-top:6px}textarea{min-height:90px}
+label{display:block;margin-top:12px;font-weight:700;font-size:14px;color:var(--mute)}
+#nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0));display:flex;gap:2px;padding:6px;border-radius:26px;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(16px);box-shadow:0 12px 34px rgba(0,0,0,.2);z-index:6;max-width:calc(100% - 20px)}
+#nav button{border:0;background:none;color:var(--mute);border-radius:20px;padding:7px 12px;font:700 11px Onest,sans-serif;display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer}#nav button span{font-size:19px}#nav button.on{background:var(--g);color:#fff}
+.md{position:fixed;inset:0;z-index:20;background:#0008;display:flex;align-items:flex-end;justify-content:center}.md>div{width:100%;max-width:680px;background:var(--card);border-radius:28px 28px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom,0));max-height:90vh;overflow:auto;animation:in .25s}
+#ts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0));background:#11251af0;color:#fff;padding:10px 16px;border-radius:14px;font-size:14px;z-index:30;opacity:0;transition:.25s;pointer-events:none;max-width:90%;text-align:center}#ts.on{opacity:1}
+.tabs{display:flex;gap:6px;overflow:auto;padding:4px 0}.tabs button{border:0;border-radius:12px;padding:8px 12px;background:var(--soft);color:var(--ink);font:700 13px Onest,sans-serif;white-space:nowrap;cursor:pointer}.tabs button.on{background:var(--g);color:#fff}
+.k{color:var(--mute);font-size:13px}.tag{display:inline-block;border-radius:9px;padding:2px 8px;background:var(--soft);font-size:12px;font-weight:700}a{color:var(--g)}
+</style>
+</head>
+<body>
+<header id="hd"></header><main id="v"></main><nav id="nav"></nav><div id="md" hidden></div><div id="ts"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+const tg=window.Telegram&&Telegram.WebApp||{};try{tg.ready();tg.expand()}catch(e){}
+if(tg.colorScheme)document.documentElement.dataset.theme=tg.colorScheme;
+const API=(window.HUMO_API||"").replace(/\/$/,"");
+const T={
+uz:{home:"Bosh",docs:"Shifokor",wards:"Palata",ai:"AI",more:"Yana",adm:"Admin",ht:"Proktologiya klinikasi",hs:"Kechayu kunduz, dam olish kunisiz. 8 yillik tajriba, lazer xonasi va qulay palatalar.",book:"Qabulga yozilish",call:"Menga telefon qiling",p1:"Konsultatsiya",p2:"Bot orqali (bir marta)",u:"so’m",f1:"⏰ 24/7 qabul",f2:"🔬 Lazer xonasi",f3:"🍽 3 mahal ovqat",f4:"🏅 8 yillik tajriba",dt:"Shifokorlar",d1:"Proktolog, 1992 yil. 7 yillik tajriba. Rossiya, Turkiya, Ozarbayjon va Qozog’istonda malaka oshirgan.",d2:"1995 yil. 4 yillik tajriba.",wt:"Palatalar",w1:"Oddiy palata",w1d:"2–4 kishilik. Wi-Fi, televizor. Kuniga 3 mahal parhez ovqat.",w2:"Lyuks, 2 kishilik",w2d:"Wi-Fi, televizor, shaxsiy hammom. Kuniga 3 mahal parhez ovqat.",w3:"Lyuks, 3 kishilik",w3d:"Wi-Fi, televizor, konditsioner, shaxsiy hammom. Kuniga 3 mahal parhez ovqat.",at:"AI maslahatchi",ah:"Humo Med va gemorroy haqida so’rang. Javoblar tashxis emas.",ap:"Savolingizni yozing…",lis:"🔊 Eshitish",ae:"Hozir javob bera olmadim.",al:"Limit tugadi, keyinroq urinib ko’ring.",ao:"AI hozir o’chirilgan.",loc:"Manzil",map:"Xaritada ochish",gal:"Galereya",vid:"Videolar",cert:"Sertifikatlar",ref:"Do’st taklif qilish",refd:"Har bir do’st uchun 1% chegirma. Taklif qilinganlar:",copy:"Havolani nusxalash",copied:"Nusxalandi",sup:"Texnik yordam",sph:"Savol, xatolik yoki hamkorlik taklifingiz…",send:"Yuborish",nm:"Ismingiz",dr:"Shifokor",any:"Farqi yo’q",st:"Holatingiz",s1:"Qon ketishi bor",s2:"Endi boshlangan",s3:"Aniq bilmayman",tm:"Qulay vaqt",ok:"Arizangiz qabul qilindi! Tez orada tasdiqlaymiz.",np:"Avval botda /start bosib, telefon raqamingizni yuboring.",no:"Bekor",cb:"So’rov qabul qilindi, qo’ng’iroq qilamiz.",cbd:"So’rov allaqachon qabul qilingan.",er:"Xatolik, qayta urinib ko’ring.",sent:"Yuborildi ✅",need:"Telegram ichida oching."},
+ru:{home:"Главная",docs:"Врачи",wards:"Палаты",ai:"AI",more:"Ещё",adm:"Админ",ht:"Клиника проктологии",hs:"Круглосуточно, без выходных. 8 лет опыта, лазерный кабинет и удобные палаты.",book:"Записаться на приём",call:"Позвоните мне",p1:"Консультация",p2:"Через бота (один раз)",u:"сум",f1:"⏰ Приём 24/7",f2:"🔬 Лазерный кабинет",f3:"🍽 3-разовое питание",f4:"🏅 8 лет опыта",dt:"Врачи",d1:"Проктолог, 1992 г.р. Стаж 7 лет. Повышал квалификацию в России, Турции, Азербайджане и Казахстане.",d2:"1995 г.р. Стаж 4 года.",wt:"Палаты",w1:"Обычная палата",w1d:"2–4 места. Wi-Fi, телевизор. 3-разовое диетическое питание.",w2:"Люкс, 2 места",w2d:"Wi-Fi, телевизор, отдельный санузел. 3-разовое диетическое питание.",w3:"Люкс, 3 места",w3d:"Wi-Fi, телевизор, кондиционер, отдельный санузел. 3-разовое диетическое питание.",at:"AI-консультант",ah:"Спросите о Humo Med и геморрое. Ответы не являются диагнозом.",ap:"Напишите вопрос…",lis:"🔊 Прослушать",ae:"Сейчас не удалось ответить.",al:"Лимит исчерпан, попробуйте позже.",ao:"AI сейчас отключён.",loc:"Адрес",map:"Открыть на карте",gal:"Галерея",vid:"Видео",cert:"Сертификаты",ref:"Пригласить друга",refd:"За каждого друга скидка 1%. Приглашено:",copy:"Скопировать ссылку",copied:"Скопировано",sup:"Техподдержка",sph:"Вопрос, ошибка или предложение о сотрудничестве…",send:"Отправить",nm:"Ваше имя",dr:"Врач",any:"Не важно",st:"Ваше состояние",s1:"Есть кровотечение",s2:"Только начинается",s3:"Не уверен(а)",tm:"Удобное время",ok:"Заявка принята! Скоро подтвердим.",np:"Сначала нажмите /start в боте и отправьте номер телефона.",no:"Отмена",cb:"Запрос принят, мы позвоним.",cbd:"Запрос уже принят.",er:"Ошибка, попробуйте ещё раз.",sent:"Отправлено ✅",need:"Откройте внутри Telegram."},
+en:{home:"Home",docs:"Doctors",wards:"Wards",ai:"AI",more:"More",adm:"Admin",ht:"Proctology clinic",hs:"Open day and night, no days off. 8 years of experience, a laser room and comfortable wards.",book:"Book an appointment",call:"Call me back",p1:"Consultation",p2:"Via the bot (once)",u:"UZS",f1:"⏰ Open 24/7",f2:"🔬 Laser room",f3:"🍽 3 meals a day",f4:"🏅 8 years of experience",dt:"Doctors",d1:"Proctologist, born 1992. 7 years of experience. Trained in Russia, Turkey, Azerbaijan and Kazakhstan.",d2:"Born 1995. 4 years of experience.",wt:"Wards",w1:"Standard ward",w1d:"2–4 beds. Wi-Fi, TV. Diet meals three times a day.",w2:"Lux, 2 beds",w2d:"Wi-Fi, TV, private bathroom. Diet meals three times a day.",w3:"Lux, 3 beds",w3d:"Wi-Fi, TV, air conditioning, private bathroom. Diet meals three times a day.",at:"AI assistant",ah:"Ask about Humo Med and hemorrhoids. Answers are not a diagnosis.",ap:"Type your question…",lis:"🔊 Listen",ae:"I could not answer right now.",al:"Limit reached, try again later.",ao:"AI is turned off.",loc:"Location",map:"Open on the map",gal:"Gallery",vid:"Videos",cert:"Certificates",ref:"Invite a friend",refd:"1% discount for each friend. Invited:",copy:"Copy link",copied:"Copied",sup:"Tech support",sph:"Question, bug report or cooperation offer…",send:"Send",nm:"Your name",dr:"Doctor",any:"No preference",st:"Your situation",s1:"There is bleeding",s2:"Just started",s3:"Not sure",tm:"Convenient time",ok:"Request received! We will confirm soon.",np:"First press /start in the bot and send your phone number.",no:"Cancel",cb:"Request received, we will call you.",cbd:"Request already received.",er:"Error, please try again.",sent:"Sent ✅",need:"Open inside Telegram."}};
+const LS=(()=>{try{return localStorage}catch(e){return{}}})();
+let L=[new URLSearchParams(location.search).get("lang"),LS.lang,((tg.initDataUnsafe||{}).user||{}).language_code].map(x=>(x||"").slice(0,2)).find(x=>T[x])||"uz";
+const t=k=>T[L][k]??T.uz[k]??k;
+const S={tab:"home",me:null,media:[],chat:[],adm:"apps"};
+const DOCS={hasan:["Sulaymonov Hasanjon Tohirjonovich","img/hasanjon.jpg","d1"],zuh:["Xolikov Zuhriddin Muhiddin o’g’li","img/zuhriddin.jpg","d2"]};
+async function api(p,b,raw){const o={headers:{Authorization:"tma "+(tg.initData||"")}};if(b instanceof FormData){o.method="POST";o.body=b}else if(b!==undefined){o.method="POST";o.body=JSON.stringify(b);o.headers["Content-Type"]="application/json"}
+const r=await fetch(API+p,o);if(raw)return r;const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(j.error||r.status);e.d=j;throw e}return j}
+let tt;function toast(m){const e=$("#ts");e.textContent=m;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),2800)}
+const mu=u=>/^https?:/.test(u)?u:API+u;
+const med=s=>S.media.filter(m=>m.section===s);
+const mi=m=>m.kind==="video"?`<video controls playsinline preload="metadata" src="${esc(mu(m.url))}"></video>${m.title?`<p class=k>${esc(m.title)}</p>`:""}`:`<img src="${esc(mu(m.url))}" alt="${esc(m.title)}" loading=lazy>`;
+function modal(title,inner,ok){const m=$("#md");m.hidden=false;m.className="md";m.innerHTML=`<div><h2 style="margin-top:0">${title}</h2>${inner}<div class=row><button class="b p" id=mo>OK</button><button class=b id=mc>${t("no")}</button></div></div>`;
+const close=()=>{m.hidden=true;m.innerHTML=""};$("#mc").onclick=close;m.onclick=e=>{if(e.target===m)close()};$("#mo").onclick=async()=>{const v=$("#i1")?$("#i1").value.trim():"";const r=await ok(v,$("#i2")?$("#i2").value:"",$("#i3")?$("#i3").value:"");if(r!==false)close()}}
+const fmtDT=v=>v.replace(/(\d{4})-(\d\d)-(\d\d)T(\d\d:\d\d)/,"$3.$2.$1 $4");
+/* ---------------- ko'rinishlar ---------------- */
+const V={
+home(){const me=S.me||{};return`${me.banner?`<div class=ann>📣 ${esc(me.banner)}</div>`:""}
+<section class=hero><h1>${t("ht")}</h1><p>${t("hs")}</p><div class=row><button class="b p" data-a=book>${t("book")}</button><button class=b data-a=cb>📞 ${t("call")}</button></div></section>
+<div class=pr><div class=card><small>${t("p1")}</small><b>70 000 ${t("u")}</b></div><div class="card hl"><small>${t("p2")}</small><b>50 000 ${t("u")}</b></div></div>
+<div class=fs><div>${t("f1")}</div><div>${t("f2")}</div><div>${t("f3")}</div><div>${t("f4")}</div></div>
+${med("videos")[0]?`<div class=card>${mi(med("videos")[0])}</div>`:""}`},
+docs(){return`<h2>${t("dt")}</h2>`+Object.entries(DOCS).map(([k,[n,im,d]])=>`<div class="card dc"><img src="${im}" alt=""><div><h3>${n}</h3><p>${t(d)}</p><button class="b p sm" data-a=book data-d=${k}>${t("book")}</button></div></div>`).join("")},
+wards(){const w=[["w1","img/ward-normal.jpg","200 000"],["w2","img/ward-lux2.jpg","250 000"],["w3","img/ward-lux3.jpg","250 000"]];
+return`<h2>${t("wt")}</h2>`+w.map(([k,im,p])=>`<div class="card wc"><img src="${im}" alt="" loading=lazy><h3>${t(k)}<em>${p} ${t("u")}</em></h3><p>${t(k+"d")}</p></div>`).join("")+med("wards").map(m=>`<div class=card>${mi(m)}</div>`).join("")},
+ai(){const me=S.me||{};if(!me.ai)return`<h2>${t("at")}</h2><div class=card>${t("ao")}</div>`;
+return`<h2>${t("at")}</h2><div class="card k">${t("ah")}</div><div class=ch id=ch>${S.chat.map(cm).join("")}</div><div class=ib><input id=q placeholder="${t("ap")}" maxlength=500><button class="b p" data-a=ask>➤</button></div>`},
+more(){const me=S.me||{};return`<h2>${t("loc")}</h2><div class=card><video controls playsinline preload=metadata src="video/location.mp4" onerror="this.remove()"></video><div class=row><a class="b p" href="${esc(me.map||"#")}" target=_blank>🗺 ${t("map")}</a><a class=b href="tel:${esc(me.tel||"")}">📞 ${esc(me.tel||"")}</a></div></div>
+<h2>${t("gal")}</h2><div class="card gl">${["reception","hall","laser","work"].map(i=>`<img src="img/${i}.jpg" alt="" loading=lazy>`).join("")}${med("gallery").map(mi).join("")}</div>
+<h2>${t("cert")}</h2><div class="card gl"><img src="img/certs.jpg" alt="" style="grid-column:1/-1" loading=lazy>${med("certs").map(mi).join("")}</div>
+${med("videos").length?`<h2>${t("vid")}</h2>`+med("videos").map(m=>`<div class=card>${mi(m)}</div>`).join(""):""}
+<h2>${t("ref")}</h2><div class=card>${t("refd")} <b>${me.refs||0}</b><div class=row><button class="b p" data-a=copy>${t("copy")}</button></div></div>
+<h2>${t("sup")}</h2><div class=card><textarea id=sp placeholder="${t("sph")}"></textarea><div class=row><button class="b p" data-a=sup>${t("send")}</button></div></div>`},
+adm(){const o=(S.me||{}).owner;return`<h2>🛠 Admin</h2><div class=tabs>${[["apps","📋"],["calls","📞"],["qs","❓"],["users","👥"],["stats","📊"],["set","⚙️"]].concat(o?[["media","🖼"]]:[]).map(([k,i])=>`<button class="${S.adm===k?"on":""}" data-a=at data-k=${k}>${i}</button>`).join("")}</div><div id=ad></div>`}};
+const cm=m=>`<div class="m ${m.r}">${esc(m.t).replace(/\n/g,"<br>")}${m.q&&(S.me||{}).tts?`<br><button class="b sm" data-a=tts data-q=${m.q}>${t("lis")}</button>`:""}</div>`;
+/* ---------------- admin ---------------- */
+const stl=a=>({new:"🆕",accepted:"✅",confirmed:"✅",time_changed:"🕒",rejected:"❌"}[a]||"•");
+const line=(k,v)=>v?`<div><span class=k>${k}:</span> ${v}</div>`:"";
+async function loadAdm(){const box=$("#ad");if(!box)return;box.innerHTML="…";const k=S.adm;try{
+if(k==="apps"){const r=await api("/api/admin/appointments");box.innerHTML=r.map(a=>`<div class=card><b>${stl(a.st)} #${a.id}</b> <span class=tag>${esc(a.status)}</span>${line("👤",esc(a.name))}${line("📞",`<a href="tel:${esc(a.phone)}">${esc(a.phone)}</a>`)}${line("🔗",a.username?`<a href="https://t.me/${esc(a.username)}">@${esc(a.username)}</a>`:"")}${line("👨‍⚕️",esc(a.doctor))}${line("🩺",esc(a.stage))}${line("🕒",esc(a.time))}${line("💰",a.price+" so’m")}
+<div class=row>${a.st==="new"?`<button class="b sm p" data-a=ap data-act=ok data-id=${a.id}>✅</button>`:""}${a.st!=="rejected"?`<button class="b sm" data-a=ap data-act=time data-id=${a.id}>🕒</button><button class="b sm" data-a=ap data-act=doc data-id=${a.id}>👨‍⚕️</button>`:""}${["rejected"].includes(a.st)?"":`<button class="b sm dn" data-a=ap data-act=no data-id=${a.id}>❌</button>`}<button class="b sm" data-a=ap data-act=reply data-id=${a.id}>💬</button></div></div>`).join("")||"—"}
+if(k==="calls"){const r=await api("/api/admin/callbacks");box.innerHTML=r.map(c=>`<div class=card><b>${c.done?"✅":"🆕"} #${c.id}</b> ${esc(c.name)} <a href="tel:${esc(c.phone)}">${esc(c.phone)}</a><div class=k>${esc(c.created)}${c.by?" · "+esc(c.by):""}</div>${c.done?"":`<div class=row><button class="b sm p" data-a=cd data-id=${c.id}>✅</button></div>`}</div>`).join("")||"—"}
+if(k==="qs"){const r=await api("/api/admin/questions");box.innerHTML=r.map(q=>`<div class=card><b>${esc(q.name||"—")}</b> ${q.username?"@"+esc(q.username):""} ${esc(q.phone||"")}<div>❓ ${esc(q.question)}</div><div class=k>🤖 ${esc((q.answer||"").slice(0,300))}</div></div>`).join("")||"—"}
+if(k==="users"){const r=await api("/api/admin/users");box.innerHTML=r.map(u=>`<div class=card>${esc(u.name||"—")} ${u.username?"@"+esc(u.username):""} <span class=k>${esc(u.phone||"")} · ${esc(u.lang||"")} · ${esc(u.created)}</span></div>`).join("")}
+if(k==="stats"){const s=await api("/api/admin/overview");const L2={users:"Foydalanuvchilar",users_today:"Bugun qo’shilgan",apps_total:"Jami arizalar",apps_new:"Yangi",apps_accepted:"Qabul qilingan",apps_rejected:"Rad etilgan",apps_time_changed:"Vaqt kelishilmoqda",apps_today:"Bugungi qabullar",calls_new:"Javobsiz qo’ng’iroqlar",questions:"AI savollari"};box.innerHTML=`<div class=card>${Object.entries(L2).map(([a,b])=>line(b,`<b>${s[a]}</b>`)).join("")}</div>`}
+if(k==="set"){const s=await api("/api/admin/overview"),o=(S.me||{}).owner;box.innerHTML=`<div class=card><b>🤖 AI</b> ${s.ai?"✅":"⛔"}<div class=row><button class="b sm" data-a=ait data-on=${s.ai?0:1}>${s.ai?"O’chirish":"Yoqish"}</button></div></div><div class=card><b>📣 Rassilka</b><textarea id=bc placeholder="Barcha foydalanuvchilarga xabar…"></textarea><div class=row><button class="b p sm" data-a=bc>Yuborish</button></div></div>${o?`<div class=card><b>📌 E’lon (bosh sahifada)</b><textarea id=bn>${esc((S.me||{}).banner||"")}</textarea><div class=row><button class="b p sm" data-a=bn>Saqlash</button></div></div>`:""}`}
+if(k==="media"){const r=await api("/api/owner/media");box.innerHTML=`<div class=card><b>🖼 Rasm / video yuklash</b><form id=up><select name=section><option value=gallery>Galereya</option><option value=videos>Videolar</option><option value=certs>Sertifikatlar</option><option value=wards>Palatalar</option></select><input name=title placeholder="Sarlavha (ixtiyoriy)"><input type=file name=file accept="image/*,video/*" required><div class=row><button class="b p sm">Yuklash</button></div></form><div class=k>Video 720p ga o’giriladi, bir necha daqiqa olishi mumkin.</div></div>`+r.map(m=>`<div class=card>${m.status==="ready"?mi(m):`<span class=tag>${m.status}</span>`}<div class=k>#${m.id} · ${m.section}</div><div class=row><button class="b sm dn" data-a=md data-id=${m.id}>🗑</button></div></div>`).join("")}
+}catch(e){box.innerHTML=`<div class=card>${t("er")} ${esc(e.message)}</div>`}}
+/* ---------------- harakatlar ---------------- */
+const A={
+book(b){const me=S.me||{};const d=b.dataset.d||"";modal(t("book"),`<label>${t("nm")}</label><input id=i1 value="${esc(me.name&&me.name!=="—"?me.name:"")}"><label>${t("dr")}</label><select id=i2><option value="">${t("any")}</option>${Object.entries(DOCS).map(([k,v])=>`<option value=${k} ${k===d?"selected":""}>${v[0]}</option>`).join("")}</select><label>${t("st")}</label><select id=i3><option value=bleed>${t("s1")}</option><option value=start>${t("s2")}</option><option value=unknown selected>${t("s3")}</option></select><label>${t("tm")}</label><input id=tm type=datetime-local>`,
+async(n,dr,st)=>{const tm=$("#tm").value;if(!tm){toast(t("tm"));return false}try{await api("/api/book",{name:n,doctor:dr,stage:st,time:fmtDT(tm)});toast(t("ok"))}catch(e){toast(e.message==="phone"?t("np"):t("er"));return e.message==="phone"?true:false}})},
+async cb(){try{const r=await api("/api/callback",{});toast(r.status==="ok"?t("cb"):r.status==="dup"?t("cbd"):t("np"))}catch(e){toast(t("er"))}},
+async ask(){const i=$("#q"),v=i.value.trim();if(!v)return;i.value="";S.chat.push({r:"u",t:v});S.chat.push({r:"a",t:"…",tmp:1});draw();
+try{const r=await api("/api/ai",{text:v});S.chat.pop();S.chat.push({r:"a",t:r.answer,q:r.qid})}catch(e){S.chat.pop();S.chat.push({r:"a",t:(e.message==="limit"?t("al"):e.message==="ai_off"?t("ao"):t("ae"))+(e.d&&e.d.detail?"\n"+e.d.detail:"")})}draw()},
+async tts(b){const o=b.textContent;b.textContent="…";try{const r=await api("/api/tts",{qid:+b.dataset.q},true);if(!r.ok)throw 0;new Audio(URL.createObjectURL(await r.blob())).play()}catch(e){toast(t("er"))}b.textContent=o},
+async copy(){const l=(S.me||{}).link||"";try{await navigator.clipboard.writeText(l);toast(t("copied"))}catch(e){tg.openTelegramLink?tg.openTelegramLink("https://t.me/share/url?url="+encodeURIComponent(l)):toast(l)}},
+async sup(){const v=$("#sp").value.trim();if(!v)return;try{await api("/api/support",{text:v});$("#sp").value="";toast(t("sent"))}catch(e){toast(t("er"))}},
+at(b){S.adm=b.dataset.k;go("adm")},
+ap(b){const id=+b.dataset.id,k=b.dataset.act,run=async(v)=>{try{const r=await api("/api/admin/app",{id,action:k==="doc"?"doctor":k,value:v});toast(r.msg||"OK");loadAdm()}catch(e){toast(t("er"))}};
+if(k==="ok")return run("");if(k==="no")return modal("❌","<input id=i1 placeholder='Sabab (ixtiyoriy)'>",v=>run(v));
+if(k==="time")return modal("🕒","<input id=i1 type=datetime-local>",v=>v?run(fmtDT(v)):false);
+if(k==="doc")return modal("👨‍⚕️",`<select id=i1>${Object.entries(DOCS).map(([a,v])=>`<option value=${a}>${v[0]}</option>`).join("")}</select>`,v=>run(v));
+if(k==="reply")return modal("💬","<textarea id=i1></textarea>",v=>v?run(v):false)},
+async cd(b){await api("/api/admin/callback_done",{id:+b.dataset.id});loadAdm()},
+async ait(b){await api("/api/admin/ai",{on:b.dataset.on==="1"});loadAdm()},
+async bc(){const v=$("#bc").value.trim();if(!v||!confirm("Barchaga yuborilsinmi?"))return;try{const r=await api("/api/admin/broadcast",{text:v});toast("✅ "+r.users);$("#bc").value=""}catch(e){toast(t("er"))}},
+async bn(){try{await api("/api/owner/banner",{text:$("#bn").value});S.me.banner=$("#bn").value;toast(t("sent"))}catch(e){toast(t("er"))}},
+async md(b){if(!confirm("O’chirilsinmi?"))return;await api("/api/owner/media_delete",{id:+b.dataset.id});await loadMedia();loadAdm()}};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(b&&A[b.dataset.a])A[b.dataset.a](b)});
+document.addEventListener("submit",async e=>{if(e.target.id!=="up")return;e.preventDefault();const f=e.target.querySelector("input[type=file]").files[0];if(!f)return;toast("⏳ "+f.name);try{await api("/api/owner/media",new FormData(e.target));toast(t("sent"));setTimeout(async()=>{await loadMedia();loadAdm()},1500)}catch(x){toast(x.message==="too_big"?"Fayl juda katta (200 MB gacha)":t("er"))}});
+/* ---------------- chizish ---------------- */
+function draw(){const c=$("#ch");if(c){c.innerHTML=S.chat.map(cm).join("");c.lastElementChild&&c.lastElementChild.scrollIntoView({block:"end"})}}
+function go(tab){S.tab=tab;$("#v").innerHTML=`<div class=view>${V[tab]()}</div>`;if(tab==="adm")loadAdm();window.scrollTo(0,0);nav()}
+function nav(){const items=[["home","🏠"],["docs","🩺"],["wards","🛏"],["ai","🤖"],["more","☰"]].concat((S.me||{}).admin?[["adm","🛠"]]:[]);
+$("#nav").innerHTML=items.map(([k,i])=>`<button class="${S.tab===k?"on":""}" data-go=${k}><span>${i}</span>${t(k)}</button>`).join("")}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b)go(b.dataset.go)});
+function head(){$("#hd").innerHTML=`<img src="img/logo.jpg" alt=""><b>HUMO<i>MED</i></b><div class=lg>${["uz","ru","en"].map(l=>`<button class="${l===L?"on":""}" data-l=${l}>${l.toUpperCase()}</button>`).join("")}</div>`}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-l]");if(!b)return;L=b.dataset.l;LS.lang=L;document.documentElement.lang=L;head();go(S.tab);if(tg.initData)api("/api/lang",{lang:L}).catch(()=>{})});
+async function loadMedia(){try{S.media=await api("/api/media")}catch(e){}}
+(async()=>{document.documentElement.lang=L;head();go("home");
+if(!tg.initData)return;try{S.me=await api("/api/me");if(!new URLSearchParams(location.search).get("lang")&&!LS.lang&&S.me.lang){L=S.me.lang;head()}}catch(e){}
+await loadMedia();go(S.tab)})();
+</script>
+</body>
+</html>
