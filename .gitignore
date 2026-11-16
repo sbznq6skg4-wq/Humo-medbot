@@ -1,0 +1,18 @@
+# Environment files and local credentials
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.der
+**/secrets.*
+
+# Keep bot code and its local secrets out of the website repository
+**/bot/

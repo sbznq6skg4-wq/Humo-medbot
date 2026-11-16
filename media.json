@@ -1,0 +1,156 @@
+[
+ {
+  "section": "intro",
+  "kind": "video",
+  "file": "video/intro.mp4",
+  "poster": "video/intro.jpg",
+  "t": {
+   "uz": "Humo Med haqida",
+   "ru": "О Humo Med",
+   "en": "About Humo Med"
+  }
+ },
+ {
+  "section": "about",
+  "kind": "video",
+  "file": "video/qabulxona.mp4",
+  "poster": "video/qabulxona.jpg",
+  "t": {
+   "uz": "Qabulxonamiz",
+   "ru": "Наша приёмная",
+   "en": "Our reception"
+  }
+ },
+ {
+  "section": "work",
+  "kind": "video",
+  "file": "video/ish.mp4",
+  "poster": "video/ish.jpg",
+  "t": {
+   "uz": "Ish jarayoni",
+   "ru": "Рабочий процесс",
+   "en": "How we work"
+  }
+ },
+ {
+  "section": "patients",
+  "kind": "video",
+  "file": "video/bemor.mp4",
+  "poster": "video/bemor.jpg",
+  "t": {
+   "uz": "Bemor fikri",
+   "ru": "Отзыв пациента",
+   "en": "Patient review"
+  }
+ },
+ {
+  "section": "hem",
+  "kind": "video",
+  "file": "video/gemorroy.mp4",
+  "poster": "video/gemorroy.jpg",
+  "t": {
+   "uz": "Gemorroy haqida",
+   "ru": "О геморрое",
+   "en": "About hemorrhoids"
+  }
+ },
+ {
+  "section": "laser",
+  "kind": "video",
+  "file": "video/lazer1.mp4",
+  "poster": "video/lazer1.jpg",
+  "t": {
+   "uz": "Lazer xonasi",
+   "ru": "Лазерный кабинет",
+   "en": "Laser room"
+  }
+ },
+ {
+  "section": "laser",
+  "kind": "video",
+  "file": "video/lazer2.mp4",
+  "poster": "video/lazer2.jpg",
+  "t": {
+   "uz": "Lazer uskunasi",
+   "ru": "Лазерный аппарат",
+   "en": "Laser device"
+  }
+ },
+ {
+  "section": "wards_normal",
+  "kind": "video",
+  "file": "video/palata1.mp4",
+  "poster": "video/palata1.jpg",
+  "t": {
+   "uz": "Oddiy palata",
+   "ru": "Обычная палата",
+   "en": "Standard ward"
+  }
+ },
+ {
+  "section": "wards_normal",
+  "kind": "video",
+  "file": "video/palata2.mp4",
+  "poster": "video/palata2.jpg",
+  "t": {
+   "uz": "Oddiy palata",
+   "ru": "Обычная палата",
+   "en": "Standard ward"
+  }
+ },
+ {
+  "section": "wards_lux2",
+  "kind": "video",
+  "file": "video/lyuks2.mp4",
+  "poster": "video/lyuks2.jpg",
+  "t": {
+   "uz": "Lyuks, 2 kishilik",
+   "ru": "Люкс, 2 места",
+   "en": "Lux, 2 beds"
+  }
+ },
+ {
+  "section": "wards_lux3",
+  "kind": "video",
+  "file": "video/lyuks3.mp4",
+  "poster": "video/lyuks3.jpg",
+  "t": {
+   "uz": "Lyuks, 3 kishilik",
+   "ru": "Люкс, 3 места",
+   "en": "Lux, 3 beds"
+  }
+ },
+ {
+  "section": "wards_lux3",
+  "kind": "video",
+  "file": "video/hammom.mp4",
+  "poster": "video/hammom.jpg",
+  "t": {
+   "uz": "Hammom",
+   "ru": "Санузел",
+   "en": "Bathroom"
+  }
+ },
+ {
+  "section": "location",
+  "kind": "video",
+  "file": "video/location.mp4",
+  "poster": "video/location.jpg",
+  "t": {
+   "uz": "Klinika kirishi",
+   "ru": "Вход в клинику",
+   "en": "Clinic entrance"
+  }
+ },
+ {
+  "section": "location",
+  "kind": "video",
+  "file": "video/yol.mp4",
+  "poster": "video/yol.jpg",
+  "t": {
+   "uz": "Klinikaga yo’l",
+   "ru": "Как добраться",
+   "en": "How to get here"
+  }
+ }
+]
