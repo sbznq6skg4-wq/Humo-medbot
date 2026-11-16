@@ -101,13 +101,16 @@ VERTEX_URL = "https://aiplatform.googleapis.com/v1/publishers/google/models/{mod
 
 
 def _gemini_routes() -> list[tuple[str, str, str]]:
-    """(yo'l nomi, URL shabloni, model) ro'yxati. 'AQ.' bilan boshlanadigan kalitlar Vertex AI express
-    kalitlari, 'AIza...' kalitlar esa Google AI Studio kalitlari: avval mosini, keyin boshqasini sinaymiz."""
+    """(yo'l nomi, URL shabloni, model) ro'yxati."""
     studio, vertex = ("AI Studio", STUDIO_URL), ("Vertex express", VERTEX_URL)
     order = [vertex, studio] if config.GEMINI_API_KEY.startswith("AQ.") else [studio, vertex]
-    models = list(dict.fromkeys(m for m in (config.GEMINI_MODEL, "gemini-flash-latest", "gemini-2.5-flash") if m))
+    models = [
+        config.GEMINI_MODEL,
+        "gemini-flash-latest",
+        "gemini-3.8-flash"
+    ]
     routes = [(n, u, m) for n, u in order for m in models]
-    if GEMINI_WORKING:  # ilgari ishlagan yo'lni birinchi sinaymiz
+    if GEMINI_WORKING:
         for r in routes:
             if f"{r[0]} / {r[2]}" == GEMINI_WORKING:
                 routes.remove(r)
