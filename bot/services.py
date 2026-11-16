@@ -103,9 +103,9 @@ VERTEX_URL = "https://aiplatform.googleapis.com/v1/publishers/google/models/{mod
 def _gemini_routes() -> list[tuple[str, str, str]]:
     """(yo'l nomi, URL shabloni, model) ro'yxati."""
     models = [
-        config.GEMINI_MODEL,
-        "gemini-flash-latest",
-        "gemini-3.8-flash"
+        "gemini-1.5-flash",
+        "gemini-1.5-pro",
+        "gemini-flash-latest"
     ]
     routes = [("AI Studio", STUDIO_URL, m) for m in models]
     if GEMINI_WORKING:
@@ -113,7 +113,7 @@ def _gemini_routes() -> list[tuple[str, str, str]]:
             if f"{r[0]} / {r[2]}" == GEMINI_WORKING:
                 routes.remove(r)
                 routes.insert(0, r)
-                break
+                breaks
     return routes 
 
 
