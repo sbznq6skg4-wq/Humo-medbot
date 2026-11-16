@@ -97,24 +97,47 @@ async def close_http() -> None:
 GEMINI_WORKING: str | None = None  # oxirgi muvaffaqiyatli "yo'l / model" (tashxis uchun)
 
 STUDIO_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-VERTEX_URL = "https://aiplatform.googleapis.com/v1/publishers/google/models/{model}:generateContent"
 
 
 def _gemini_routes() -> list[tuple[str, str, str]]:
-    """(yo'l nomi, URL shabloni, model) ro'yxati."""
-    models = [
-        "gemini-3.8-flash",
-        "gemini-flash-latest",
-        "gemini-1.5-flash"
-    ]
+    """(yo'l nomi, URL shabloni, model) ro'yxati. Faqat Google AI Studio orqali ishlaydi."""
+    models = list(dict.fromkeys(m for m in ("gemini-3.8-flash", "gemini-flash-latest", "gemini-2.5-flash", config.GEMINI_MODEL) if m))
     routes = [("AI Studio", STUDIO_URL, m) for m in models]
-    if GEMINI_WORKING:
+    if GEMINI_WORKING:  # ilgari ishlagan yo'lni birinchi sinaymiz
         for r in routes:
             if f"{r[0]} / {r[2]}" == GEMINI_WORKING:
                 routes.remove(r)
                 routes.insert(0, r)
-                breaks
-    return routes 
+                break
+    return routes
+
+
+def _fallback_answer(text: str) -> str:
+    """Agar barcha Gemini modellari band (503) yoki limitda (429) bo'lsa, bemorga chiroyli tayyor javob qaytaradi."""
+    t = (text or "").lower()
+    if any(w in t for w in ("salom", "assalom", "qalay", "yaxshi")):
+        return (
+            "Assalomu alaykum! 👋 Humo Med klinikasining virtual maslahatchisiman.\n\n"
+            "Sizga klinikamiz xizmatlari, shifokorlar qabuli yoki proktologiya/gemorroy bo'yicha umumiy ma'lumotlarda yordam bera olaman. "
+            "Qanday savolingiz bor yoki qabulga yozilmoqchimisiz?"
+        )
+    if any(w in t for w in ("narx", "qancha", "pul", "to'lov", "chegirma", "konsultatsiya")):
+        return (
+            "💰 Humo Med klinikasida ko'rik va muolaja narxlari kasallik bosqichi hamda shifokor tavsiyasiga qarab belgilanadi.\n\n"
+            "Bot orqali ro'yxatdan o'tsangiz, maxsus chegirmali narxlardan foydalanishingiz mumkin. "
+            "Aniq ma'lumot olish uchun pastdagi tugmalar orqali qabulga yoziling yoki +998 97 992 11 11 raqamiga qo'ng'iroq qiling."
+        )
+    if any(w in t for w in ("manzil", "qayerda", "lokatsiya", "ish vaqti", "soat")):
+        return (
+            "📍 Humo Med klinikasi manzili va ish vaqti haqida to'liq ma'lumotni ilovadagi «Klinika» bo'limidan ko'rishingiz mumkin.\n\n"
+            "📞 Qo'shimcha savollar uchun: +998 97 992 11 11"
+        )
+    return (
+        "Savolingiz qabul qilindi! 🩺 Gemorroy va proktologik muammolarda aniq tashxis qo'yish hamda samarali davolash uchun "
+        "mutaxassis shifokor ko'rigidan o'tish eng to'g'ri yechim hisoblanadi.\n\n"
+        "Hozirgina ilovadagi «Shifokor» yoki «Bosh» bo'limi orqali qulay vaqtga qabulga yozilishingiz mumkin. "
+        "Shoshilinch holatlarda +998 97 992 11 11 raqamiga murojaat qiling."
+    )
 
 
 async def ask_gemini(history: list[dict], text: str) -> str:
@@ -148,9 +171,9 @@ async def ask_gemini(history: list[dict], text: str) -> str:
             continue
         msg = data.get("error", {}).get("message", "") if isinstance(data, dict) else str(data)
         errors.append(f"{name}/{model}: {status} {str(msg)[:180]}")
-        if status == 429:  # limit tugagan: boshqa modelni sinash foyda bermaydi
-            break
-    raise RuntimeError(" | ".join(errors)[:1800])
+
+    log.warning("Gemini barcha yo'llarda xato berdi, zaxira javob qaytarilmoqda: %s", " | ".join(errors)[:500])
+    return _fallback_answer(text)
 
 
 _alert_times: dict[str, float] = {}
