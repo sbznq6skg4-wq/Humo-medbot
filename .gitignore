@@ -16,3 +16,11 @@
 
 # Keep bot code and its local secrets out of the website repository
 **/bot/
+
+.env
+**/.env
+env
+bot/env
+bot/data/
+venv/
+__pycache__/
