@@ -13,7 +13,7 @@ load_dotenv()
 # ---------- Maxfiy kalitlar (.env) ----------
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 ELEVEN_API_KEY = os.getenv("ELEVENLABS_API_KEY", "")
 ELEVEN_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID", "cgSgspJ2msm6clMCkdW9")  # Jessica
 ELEVEN_MODEL = os.getenv("ELEVENLABS_MODEL", "eleven_v3")
